@@ -18,9 +18,8 @@ class Browser(object):
 
     @staticmethod
     def add_soup(response, soup_config):
-        if "text/html" in response.headers.get("Content-Type", ""):
-            response.soup = bs4.BeautifulSoup(
-                response.content, "html.parser", **soup_config)
+        response.soup = bs4.BeautifulSoup(
+            response.content, "html.parser", **soup_config)
 
     def request(self, *args, **kwargs):
         response = self.session.request(*args, **kwargs)
